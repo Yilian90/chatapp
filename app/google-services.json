@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397252812602",
+    "project_id": "whatapp-clon-9746e",
+    "storage_bucket": "whatapp-clon-9746e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397252812602:android:ae36cf08a293e01f25ba03",
+        "android_client_info": {
+          "package_name": "com.example.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoSg0icU90Wg7DE56lqc3n6y0ucruZK3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
