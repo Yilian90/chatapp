@@ -29,6 +29,7 @@ public class MyViewModel extends AndroidViewModel {
     }
 
     public void SignOut(){
+
         repository.signOut();
     }
 }
