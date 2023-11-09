@@ -5,8 +5,12 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.chatapp.Repository.Repository;
+import com.example.chatapp.model.ChatGroup;
+
+import java.util.List;
 
 public class MyViewModel extends AndroidViewModel {
 
@@ -31,5 +35,10 @@ public class MyViewModel extends AndroidViewModel {
     public void SignOut(){
 
         repository.signOut();
+    }
+
+    // Getting Chat Groups
+    public MutableLiveData<List<ChatGroup>> getGroupList(){
+        return repository.getChatGroupmutableLiveData();
     }
 }
