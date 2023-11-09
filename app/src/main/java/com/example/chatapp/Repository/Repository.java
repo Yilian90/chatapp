@@ -95,4 +95,11 @@ public class Repository {
         });
         return chatGroupmutableLiveData;
     }
+
+    //Creating a new group
+    public void createNewChatGroup(String groupName){
+        //this function is to create and push data to Firebase
+        reference.setValue(groupName);
+
+    }
 }
