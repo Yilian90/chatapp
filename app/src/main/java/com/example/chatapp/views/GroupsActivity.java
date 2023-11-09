@@ -8,6 +8,9 @@ import com.example.chatapp.R;
 
 public class GroupsActivity extends AppCompatActivity {
 
+
+    //get all the groups available in Firebase Realtime DB
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
