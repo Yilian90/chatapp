@@ -99,7 +99,7 @@ public class Repository {
     //Creating a new group
     public void createNewChatGroup(String groupName){
         //this function is to create and push data to Firebase
-        reference.setValue(groupName);
+        reference.child(groupName).setValue("");
 
     }
 }
