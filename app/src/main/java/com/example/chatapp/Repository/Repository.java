@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.chatapp.model.ChatGroup;
+import com.example.chatapp.model.ChatMessage;
 import com.example.chatapp.views.GroupsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,16 +26,19 @@ public class Repository {
 
     // It acts as a bridge between the ViewModel and the data source
     //MutableLiveData is used to hold and observe data changes
-    MutableLiveData<List<ChatGroup>> chatGroupmutableLiveData;
+    MutableLiveData<List<ChatGroup>> chatGroupMutableLiveData;
 
     FirebaseDatabase database;
     DatabaseReference reference;
 
+    MutableLiveData<List<ChatMessage>> messagesLiveData;
+
     public Repository(){
-        this.chatGroupmutableLiveData = new MutableLiveData<>();
+        this.chatGroupMutableLiveData = new MutableLiveData<>();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
 
+        messagesLiveData = new MutableLiveData<>();
     }
 
     //Auth
@@ -85,7 +89,7 @@ public class Repository {
                     //For each loop iterates through each child of snapshot inside the loop.
                     //Data snapshot represents each child data one by one.
                 }
-                chatGroupmutableLiveData.postValue(groupsList);
+                chatGroupMutableLiveData.postValue(groupsList);
 
             }
             @Override
@@ -93,13 +97,20 @@ public class Repository {
 
             }
         });
-        return chatGroupmutableLiveData;
+        return chatGroupMutableLiveData;
     }
 
     //Creating a new group
     public void createNewChatGroup(String groupName){
         //this function is to create and push data to Firebase
-        reference.child(groupName).setValue("");
+        reference.child(groupName).setValue(groupName);
+    }
 
+    //Getting Messages Live Data
+
+    public MutableLiveData<List<ChatMessage>> getMessagesLiveData(String groupName) {
+
+
+        return messagesLiveData;
     }
 }
