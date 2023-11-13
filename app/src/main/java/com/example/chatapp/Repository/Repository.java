@@ -22,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import kotlin.collections.ArrayDeque;
+
 public class Repository {
 
     // It acts as a bridge between the ViewModel and the data source
@@ -29,7 +31,8 @@ public class Repository {
     MutableLiveData<List<ChatGroup>> chatGroupMutableLiveData;
 
     FirebaseDatabase database;
-    DatabaseReference reference;
+    DatabaseReference reference;   //The Root reference
+    DatabaseReference groupReference;
 
     MutableLiveData<List<ChatMessage>> messagesLiveData;
 
@@ -107,8 +110,30 @@ public class Repository {
     }
 
     //Getting Messages Live Data
-
     public MutableLiveData<List<ChatMessage>> getMessagesLiveData(String groupName) {
+        groupReference = database.getReference().child(groupName);
+
+        List<ChatMessage> messagesList = new ArrayList<>();
+
+        groupReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                messagesList.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren() ){
+                    ChatMessage message = dataSnapshot.getValue(ChatMessage.class);
+                    messagesList.add(message);
+                }
+
+                messagesLiveData.postValue(messagesList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 
         return messagesLiveData;
