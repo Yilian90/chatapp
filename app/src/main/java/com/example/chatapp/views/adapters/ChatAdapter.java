@@ -66,7 +66,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     public int getItemCount() {
         return chatMessageList.size();
         //return the number of the variables in the list.
-        //************* go to ChatActivity.java   *** done this java code
+        //************* go to activity_chat.xml and ChatActivity.java   *** done this java code
     }
 
 
