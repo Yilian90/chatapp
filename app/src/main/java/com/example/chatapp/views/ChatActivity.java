@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.chatapp.R;
 import com.example.chatapp.databinding.ActivityChatBinding;
@@ -65,5 +66,15 @@ public class ChatActivity extends AppCompatActivity {
         });
         binding.setVModel(myViewModel);
         //use data binding.set view model to this view model, passing this variable to MyViewModel inside activity.chat.xml
+
+        binding.sendBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String msg = binding.edittextChatMessage.getText().toString();
+
+                myViewModel.sendMessage(msg, groupName);
+            }
+        });
     }
 }

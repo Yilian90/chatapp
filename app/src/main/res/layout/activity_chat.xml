@@ -50,7 +50,9 @@
                     android:layout_marginLeft="5dp" />
 
                 <Button
-                    android:layout_width="80dp"
+
+                    android:id="@+id/sendBTN"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:text="Send" />
             </LinearLayout>

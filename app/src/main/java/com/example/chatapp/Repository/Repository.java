@@ -133,9 +133,33 @@ public class Repository {
 
             }
         });
-
-
-
         return messagesLiveData;
     }
+
+    public void sendMessage(String messageText, String chatGroup){
+        //send the message to the correct chat group
+        //In this function I can use the same Firebase instance, but I cant use the database reference because it's as valuable
+        //It depends on the chat group child
+
+        //Inside this reference method I need to pass my child(my chat group node)
+        DatabaseReference ref = database
+                .getReference(chatGroup);
+
+        //check is the message text is not null, then need to send it to the database reference chat message
+        if(!messageText.trim().equals("")) {
+            ChatMessage msg = new ChatMessage(
+                    FirebaseAuth.getInstance().getCurrentUser().getUid(), // Get User ID
+                    messageText,                                        //Get the messages itself
+                    System.currentTimeMillis()                         //Get the timestamp
+            );//This is my message object
+
+            //need to push it to the database reference
+            //first, need to create an arbitrary key
+            String randomKey = ref.push().getKey();
+            //last step
+            ref.child(randomKey).setValue(msg);
+            //********* move to the ViewModel and call this function
+        }
+    }
+
 }

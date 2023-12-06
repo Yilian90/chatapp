@@ -52,4 +52,10 @@ public class MyViewModel extends AndroidViewModel {
         return repository.getMessagesLiveData(groupName);
     }
 
+
+    //Create send message method
+    public void sendMessage(String msg, String chatGroup ){
+        repository.sendMessage(msg, chatGroup);
+    }
+
 }
