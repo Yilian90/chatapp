@@ -58,6 +58,7 @@
 
 
         <LinearLayout
+            android:gravity="end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -88,14 +89,14 @@
             </LinearLayout>
 
 
-        </LinearLayout>
+
         <ImageView
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/purple_node_bg" />
 
-
+        </LinearLayout>
     </LinearLayout>
 </layout>
 

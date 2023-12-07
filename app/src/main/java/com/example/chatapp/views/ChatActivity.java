@@ -59,9 +59,10 @@ public class ChatActivity extends AppCompatActivity {
 
                 //Scroll to the latest message added:
                 int latestPosition = myAdapter.getItemCount() -1;
-                recyclerView.smoothScrollToPosition(latestPosition);
-                //Forcing the recyclerView to scroll to the latest message added.
-
+                if(latestPosition > 0) {
+                    recyclerView.smoothScrollToPosition(latestPosition);
+                    //Forcing the recyclerView to scroll to the latest message added.
+                }
             }
         });
         binding.setVModel(myViewModel);
@@ -74,6 +75,8 @@ public class ChatActivity extends AppCompatActivity {
                 String msg = binding.edittextChatMessage.getText().toString();
 
                 myViewModel.sendMessage(msg, groupName);
+
+                binding.edittextChatMessage.getText().clear();
             }
         });
     }
